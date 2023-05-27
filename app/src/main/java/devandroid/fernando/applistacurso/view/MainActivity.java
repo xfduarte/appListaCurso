@@ -9,25 +9,30 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import devandroid.fernando.applistacurso.R;
+import devandroid.fernando.applistacurso.controller.PessoaController;
 import devandroid.fernando.applistacurso.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
+
+    Pessoa pessoa = new Pessoa("", "", "", "");
+
+    PessoaController  pessoaController = new PessoaController();
+
+    EditText editPrimeiroNome;
+    EditText editSobrenome;
+    EditText editNomeCurso;
+    EditText editTelefoneContato;
+
+    Button btnLimpar;
+    Button btnSalvar;
+    Button btnFinalizar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Pessoa pessoa = new Pessoa("", "", "", "");
-
-        EditText editPrimeiroNome;
-        EditText editSobrenome;
-        EditText editNomeCurso;
-        EditText editTelefoneContato;
-
-        Button btnLimpar;
-        Button btnSalvar;
-        Button btnFinalizar;
+        pessoaController.toString();
 
         editPrimeiroNome = findViewById(R.id.editPrimeiroNome);
         editSobrenome = findViewById(R.id.editSobrenome);
@@ -53,14 +58,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnFinalizar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Volte sempre!", Toast.LENGTH_LONG).show();
-                finish();
-            }
-        });
-
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,6 +67,15 @@ public class MainActivity extends AppCompatActivity {
                 pessoa.setTelefoneContato(editTelefoneContato.getText().toString());
 
                 Toast.makeText(MainActivity.this, "Salvo " + pessoa, Toast.LENGTH_LONG).show();
+                pessoaController.salvar(pessoa);
+            }
+        });
+
+        btnFinalizar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "Volte sempre!", Toast.LENGTH_LONG).show();
+                finish();
             }
         });
     }

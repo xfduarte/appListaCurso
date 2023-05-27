@@ -7,7 +7,10 @@
         <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+<<<<<<< HEAD
         <option name="gradleJvm" value="Android Studio default JDK" />
+=======
+>>>>>>> 3c99eba5890ce5dd64836a261a6c59776e431299
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
