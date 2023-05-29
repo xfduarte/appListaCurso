@@ -4,19 +4,30 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.List;
+
 import devandroid.fernando.applistacurso.R;
+import devandroid.fernando.applistacurso.controller.CursoController;
 import devandroid.fernando.applistacurso.controller.PessoaController;
+import devandroid.fernando.applistacurso.model.Curso;
 import devandroid.fernando.applistacurso.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
+
+    List<String> nomeCursos;
+
     EditText editPrimeiroNome;
     EditText editSobrenome;
     EditText editNomeCurso;
     EditText editTelefoneContato;
+
+    Spinner spinner;
 
     Button btnLimpar;
     Button btnSalvar;
@@ -31,16 +42,29 @@ public class MainActivity extends AppCompatActivity {
         PessoaController pessoaController = new PessoaController(MainActivity.this);
         pessoaController.buscar(pessoa);
 
+        CursoController cursoController = new CursoController();
+        nomeCursos = cursoController.dadosParaSpinner();
+
         Toast.makeText(MainActivity.this, "Inicio " + pessoaController, Toast.LENGTH_LONG).show();
 
         editPrimeiroNome = findViewById(R.id.editPrimeiroNome);
         editSobrenome = findViewById(R.id.editSobrenome);
         editNomeCurso = findViewById(R.id.editNomeCurso);
         editTelefoneContato = findViewById(R.id.editTelefoneContato);
+        spinner = findViewById(R.id.spinner);
 
         btnLimpar = findViewById(R.id.btnLimpar);
         btnSalvar = findViewById(R.id.btnSalvar);
         btnFinalizar = findViewById(R.id.btnFinalizar);
+
+        //Adapter
+        //Layout
+        //Injetar o Adapter ao Spinner - A lista será gerada
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, cursoController.dadosParaSpinner());
+
+        adapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+
+        spinner.setAdapter(adapter);
 
         editPrimeiroNome.setText(pessoa.getPrimeiroNome());
         editSobrenome.setText(pessoa.getSobreNome());
