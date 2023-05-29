@@ -41,6 +41,11 @@ public class MainActivity extends AppCompatActivity {
 
         Toast.makeText(MainActivity.this, "Inicio " + pessoaController.toString(), Toast.LENGTH_LONG).show();
 
+        pessoa.setPrimeiroNome(preferences.getString("primeiroNome",""));
+        pessoa.setSobreNome(preferences.getString("sobreNome",""));
+        pessoa.setCursoDesejado(preferences.getString("cursoDesejado",""));
+        pessoa.setTelefoneContato(preferences.getString("telefoneContato",""));
+
         editPrimeiroNome = findViewById(R.id.editPrimeiroNome);
         editSobrenome = findViewById(R.id.editSobrenome);
         editNomeCurso = findViewById(R.id.editNomeCurso);
