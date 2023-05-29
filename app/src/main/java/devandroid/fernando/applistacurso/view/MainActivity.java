@@ -15,7 +15,6 @@ import java.util.List;
 import devandroid.fernando.applistacurso.R;
 import devandroid.fernando.applistacurso.controller.CursoController;
 import devandroid.fernando.applistacurso.controller.PessoaController;
-import devandroid.fernando.applistacurso.model.Curso;
 import devandroid.fernando.applistacurso.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
@@ -36,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_spinner);
 
         Pessoa pessoa = new Pessoa("", "", "", "");
         PessoaController pessoaController = new PessoaController(MainActivity.this);
