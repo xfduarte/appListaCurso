@@ -74,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
             editSobrenome.setText("");
             editNomeCurso.setText("");
             editTelefoneContato.setText("");
+            listaVip.clear();
+            listaVip.apply();
         });
 
 /*        btnSalvar.setOnClickListener(new View.OnClickListener() {
